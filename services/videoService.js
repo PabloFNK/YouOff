@@ -7,3 +7,10 @@ export const findVideo = query => {
     .then(response => response.json())
     .then(responseJson => responseJson.items);
 };
+
+export const downloadYoutubeVideo = url => {
+  console.log("Download youtube video " + url);
+};
+
+export const getYoutubeUrlFromId = videoId =>
+  `https://www.youtube.com/watch?v=${videoId}`;

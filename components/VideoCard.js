@@ -10,6 +10,7 @@ import {
   Body,
   Right
 } from "native-base";
+import { getYoutubeUrlFromId } from "../services/videoService";
 
 const videoCard = props => {
   const video = props.video;
@@ -31,7 +32,10 @@ const videoCard = props => {
       </CardItem>
       <CardItem>
         <Left>
-          <Button transparent>
+          <Button
+            transparent
+            onPress={() => props.onPressDownload(video.id.videoId)}
+          >
             <Icon active name="download" />
             <Text>Download</Text>
           </Button>
@@ -40,9 +44,7 @@ const videoCard = props => {
           <Button
             transparent
             onPress={() =>
-              Linking.openURL(
-                `https://www.youtube.com/watch?v=${video.id.videoId}`
-              )
+              Linking.openURL(getYoutubeUrlFromId(video.id.videoId))
             }
           >
             <Icon active name="play" />
